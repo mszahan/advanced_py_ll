@@ -1,4 +1,5 @@
 import csv
+import json
 from datetime import datetime
 from pprint import pprint
 
@@ -14,11 +15,23 @@ einstein = {
 }
 
 
+einstein_json = json.dumps(einstein)
+back_to_dict = json.loads(einstein_json)
+pprint(einstein_json)
+print('===================')
+pprint(back_to_dict)
+print('===================')
+
 # use with - it keeps file open only for the codeblock then closes it
 
 with open('laureates.csv', 'r') as l_file:
     reader = csv.DictReader(l_file)
     laureates = list(reader)
+
+#creating json file from the csv file
+with open('laureates.json', 'w') as f:
+    reader = csv.DictReader(f)
+    json.dump (laureates, f, indent=2)
 
 for laureate in laureates:
     if laureate['surname'] == 'Einstein':
