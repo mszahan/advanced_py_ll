@@ -1,4 +1,5 @@
 import csv
+from datetime import datetime
 from pprint import pprint
 
 
@@ -22,4 +23,10 @@ with open('laureates.csv', 'r') as l_file:
 for laureate in laureates:
     if laureate['surname'] == 'Einstein':
         pprint(laureate)
+        print('=============')
+        year_date = datetime.strptime(laureate['year'], '%Y')
+        #the %Y-%m-%d was written since the csv is like that
+        born_date = datetime.strptime(laureate['born'], '%Y-%m-%d')
+        #we took only the year from datetime
+        print('nobel age',  year_date.year - born_date.year)
         break
