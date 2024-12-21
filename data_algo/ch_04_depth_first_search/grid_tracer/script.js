@@ -1,6 +1,6 @@
 var stampColour = 'black';
 var board = document.getElementById( "grid" );
-var gridSize = 3;
+var gridSize = 4;
 
 
 function setStampColour( stamp )
